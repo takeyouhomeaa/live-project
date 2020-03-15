@@ -1,6 +1,6 @@
-//处理主页的请求,跳转预订或者查询页面，若为开始结束预约这调用set方法设置
+//澶勭悊涓婚〉鐨勮姹�,璺宠浆棰勮鎴栬�呮煡璇㈤〉闈紝鑻ヤ负寮�濮嬬粨鏉熼绾﹁繖璋冪敤set鏂规硶璁剧疆
 
-package Servlet;
+package servlet;
 
 public class mainServlet {
 

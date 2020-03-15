@@ -1,6 +1,6 @@
 //处理查询请求,调用searchOrder方法，跳转页面
 
-package Servlet;
+package servlet;
 
 import java.io.IOException;
 import java.util.List;

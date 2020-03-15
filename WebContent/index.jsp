@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 <%--主页负责显示主界面，跳转mainServlet处理 --%>
 <%--
   Created by IntelliJ IDEA.
@@ -8,7 +6,6 @@
   Time: 9:37
   To change this template use File | Settings | File Templates.
 --%>
->>>>>>> upstream/dev
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>

@@ -60,7 +60,7 @@ public class OrderServlet extends HttpServlet {
 		YesDao yesDao = new YesDaoImp();
 		List<Yes> lists= new ArrayList<Yes>();
 		lists.add(yesDao.get("yes1", ID));
-		lists.add(yesDao.get("yes1", ID));
+		lists.add(yesDao.get("yes2", ID));
 		lists.add(yesDao.get("yes3", ID));
 		try {
 			if(IDCardValidate(ID))

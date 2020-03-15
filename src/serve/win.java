@@ -148,7 +148,6 @@ public class win {
             session.setAttribute("times",times1);
         }
     }
-
     public static  Integer getTimes(HttpServletRequest request){
         HttpSession session = request.getSession();
         Object times = session.getAttribute("times");
