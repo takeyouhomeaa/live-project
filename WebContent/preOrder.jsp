@@ -1,7 +1,3 @@
-<%-- 预订页面，跳转到preOrderServlet处理 
-  Created by 麻继友 eclipse
-  Date: 2020/3/15
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>

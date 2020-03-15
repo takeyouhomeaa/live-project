@@ -1,9 +1,19 @@
-package controller;
+package servlet;
+
+import java.io.IOException;
+import java.sql.Date;
+import java.text.SimpleDateFormat;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
-import javax.servlet.http.*;
-import java.io.IOException;
+import javax.servlet.http.Cookie;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
+
+import dao.OrderDataDao;
+import dao.OrderDataDaoImp;
 
 /**
  * Servlet implementation class StartServlet
@@ -26,11 +36,7 @@ public class StartServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
-		HttpSession session = request.getSession();
-		session.setAttribute("start", 1);
-		Cookie cookie = new Cookie("cookie", session.getId());
-		cookie.setMaxAge(2592000);
-		session.setMaxInactiveInterval(-1);
+		
 	}
 
 	/**

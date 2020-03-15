@@ -114,7 +114,6 @@ public class win {
 			}
 			default://超过第三次开启预约活动，则将抽到的人存入 第：次数%3张 yes表
 			{
-
 				int i =time%3;
 				String tableName = "Yes"+String.valueOf(i);
 				YesDao yesDao = new YesDaoImp();
@@ -155,7 +154,6 @@ public class win {
             session.setAttribute("times",times1);
         }
     }
-
     public static  Integer getTimes(HttpServletRequest request){
         HttpSession session = request.getSession();
         Object times = session.getAttribute("times");
