@@ -129,5 +129,21 @@ public class YesDaoImp implements YesDao{
         }
         return null;
     }
+
+	@Override
+	public void deleteTable(String tableName) {
+			// TODO Auto-generated method stub
+			String sql = "truncate table `"+tableName+"`";
+			Connection connection;
+			try {
+				connection = DBUtil.getConnection();
+				PreparedStatement preparedStatement = connection.prepareStatement(sql);
+				preparedStatement.execute();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+	        
+		}
 }
 
