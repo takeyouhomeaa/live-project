@@ -25,5 +25,9 @@
 <form action="EndServlet">
 <input type="submit" value="预约结束">
 </form>
+<form action="searchServlet">
+<input type="text" name="oid">
+<input type="submit" value="查询是否中签">
+</form>
   </body>
 </html>

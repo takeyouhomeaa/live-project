@@ -1,6 +1,6 @@
 package domain;
 
-import java.sql.Date;
+import java.util.Date;
 
 public class OrderData {
 	private Date start;
@@ -38,5 +38,14 @@ public class OrderData {
 	}
 	public int getSum() {
 		return sum;
+	}
+
+	@Override
+	public String toString() {
+		return "OrderData{" +
+				"start=" + start +
+				", end=" + end +
+				", sum=" + sum +
+				'}';
 	}
 }
