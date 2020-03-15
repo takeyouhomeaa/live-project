@@ -1,3 +1,4 @@
+<%--主页负责显示主界面，跳转mainServlet处理 --%>
 <%--
   Created by IntelliJ IDEA.
   User: 18030
