@@ -31,7 +31,7 @@ public class searchServlet extends HttpServlet{
 		
 		Yes buy=serchOrder.serch_(oId);
 		
-		if(oId!=null)
+		if(buy.getId()!=null)
 		{
 			request.setAttribute("buy", buy);
 	    	request.getRequestDispatcher("uOrder.jsp").forward(request, response);
