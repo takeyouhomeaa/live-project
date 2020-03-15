@@ -13,7 +13,6 @@ public class DBUtil {
 	static String encoding = "UTF-8";
 	static String loginName = "test1";
 	static String password = "xY36iZcTehxPrt23";
-
 	static {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");
