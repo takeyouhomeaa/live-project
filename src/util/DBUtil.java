@@ -7,13 +7,12 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DBUtil {
-	static String ip = "127.0.0.1";
+	static String ip = "47.93.213.196";
 	static int port = 3306;
-	static String database = "t";
+	static String database = "test";
 	static String encoding = "UTF-8";
 	static String loginName = "test1";
 	static String password = "xY36iZcTehxPrt23";
-
 	static {
 		try {
 			Class.forName("com.mysql.jdbc.Driver");

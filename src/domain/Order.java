@@ -4,8 +4,9 @@ public class Order {
     private String name;
     private Integer num;
     private String id;
-    private Integer phone;
-
+    private String phone;
+    private String orderid;
+    
     public String getName() {
         return name;
     }
@@ -30,14 +31,20 @@ public class Order {
         this.id = id;
     }
 
-    public Integer getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(Integer phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
-
+    
+    public String getOrderid() {
+		return orderid;
+	}
+    public void setOrderid(String orderid){
+    	this.orderid=orderid;
+    }
     @Override
     public String toString() {
         return "Order{" +
