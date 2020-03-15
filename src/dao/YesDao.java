@@ -12,4 +12,5 @@ public interface YesDao {
     List<Yes> list(String table);
     Yes get(String table,String id);
     public Yes getByOrderId(String table, String orderId);
+    void deleteTable(String tableName);
 }
