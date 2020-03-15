@@ -20,7 +20,7 @@ public class win {
 	
 	//只抽取预约口罩数量的三分之一的人数（无论这三分之一人是否把口罩均分配光，剩余的可下次抽取)
 	//如果预约人数少于口罩数量的三分之一则每个人都可以分配到口罩
-	public static void getRandom() {
+	public static void getRandom(HttpServletRequest request,HttpServletResponse response) {
 		OrderDataDao orderData = new OrderDataDaoImp();
 		OrderData data = orderData.find();
 		int sum = data.getSum();//获取设置的口罩个数
@@ -34,8 +34,6 @@ public class win {
 			count=list.size();
 		}
 		/////
-		HttpServletRequest request = null;
-		HttpServletResponse response = null;
 		savedTimes(request, response);
 		int time = getTimes(request);//获取第几次预约
 		/////

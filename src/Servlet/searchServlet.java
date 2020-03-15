@@ -13,7 +13,6 @@ import javax.servlet.http.HttpServletResponse;
 
 import domain.Yes;
 import domain.serchOrder;
-import model.buyProve;
 
 @WebServlet("/searchServlet")
 public class searchServlet extends HttpServlet{

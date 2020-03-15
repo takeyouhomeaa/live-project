@@ -1,7 +1,7 @@
 package dao;
 
 import java.awt.List;
-import java.sql.Date;
+import java.util.Date;
 
 import domain.OrderData;
 

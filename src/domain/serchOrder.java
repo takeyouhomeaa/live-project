@@ -4,11 +4,10 @@ package domain;
 
 import dao.YesDao;
 import dao.YesDaoImp;
-import model.buyProve;
 
 public class serchOrder {
 	public serchOrder(){
-		
+
 	}
 	public static Yes serch_(String orderId) {
 		//连接数据库查询，返回buyProve

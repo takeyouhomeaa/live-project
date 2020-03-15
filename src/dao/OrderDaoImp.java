@@ -52,8 +52,8 @@ public class OrderDaoImp implements OrderDao {
             return flat;
         } catch (SQLException e) {
             e.printStackTrace();
-            return false;
         }
+        return false;
     }
 
     @Override
