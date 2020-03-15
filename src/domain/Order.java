@@ -6,6 +6,16 @@ public class Order {
     private String id;
     private Integer phone;
 
+    public Order() {
+    }
+
+    public Order(String name, Integer num, String id, Integer phone) {
+        this.name = name;
+        this.num = num;
+        this.id = id;
+        this.phone = phone;
+    }
+
     public String getName() {
         return name;
     }

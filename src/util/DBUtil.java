@@ -7,9 +7,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class DBUtil {
-	static String ip = "127.0.0.1";
+	static String ip = "47.93.213.196";
 	static int port = 3306;
-	static String database = "t";
+	static String database = "test";
 	static String encoding = "UTF-8";
 	static String loginName = "test1";
 	static String password = "xY36iZcTehxPrt23";
@@ -23,27 +23,30 @@ public class DBUtil {
 	}
 
 	public static Connection getConnection() throws SQLException {
-		String url = String.format("jdbc:mysql://%s:%d/%s?characterEncoding=%s", ip, port, database, encoding);
+		String url = String.format("jdbc:mysql://%s:%d/%s?" +
+				"serverTimezone=UTC&characterEncoding=utf8&useUnicode=true&useSSL=false", ip, port, database);
 		return DriverManager.getConnection(url, loginName, password);
 	}
 
-	/* 关闭连接的方法 */
 	public static void close(ResultSet rs, Statement stmt, Connection conn) {
 		try {
-			if (rs != null)
+			if (rs != null){
 				rs.close();
+			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
 		try {
-			if (stmt != null)
+			if (stmt != null){
 				stmt.close();
+			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
 		try {
-			if (conn != null)
+			if (conn != null){
 				conn.close();
+			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
