@@ -1,3 +1,5 @@
+<<<<<<< HEAD
+=======
 <%--主页负责显示主界面，跳转mainServlet处理 --%>
 <%--
   Created by IntelliJ IDEA.
@@ -6,12 +8,25 @@
   Time: 9:37
   To change this template use File | Settings | File Templates.
 --%>
+>>>>>>> upstream/dev
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
   <head>
-    <title>$Title$</title>
+    <title>123</title>
   </head>
   <body>
-  $END$
+  <form action="OrderServlet" autocomplete="on">
+  姓名:<input type="text" name="name" placeholder="请输入真实姓名" required><br>
+  身份证号: <input type="text" name="ID" required><br>
+  手机号: <input type="text" name="phone" autocomplete="on" required><br>
+  想要预约的口罩数量<input type="number" name="number" required><br>
+  <input type="submit" value="预约">
+</form>
+<form action="StartServlet">
+<input type="submit" value="预约开始">
+</form>
+<form action="EndServlet">
+<input type="submit" value="预约结束">
+</form>
   </body>
 </html>

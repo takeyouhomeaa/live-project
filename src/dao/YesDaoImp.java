@@ -37,7 +37,7 @@ public class YesDaoImp implements YesDao{
     @Override
     public void add(String table, Yes yes) {
         int count = -1;
-        String sql = "INSERT INTO `" + table + "`(orderid,id,name,num,confired) VALUES(?,?,?,?,?);";
+        String sql = "INSERT INTO `" + table + "`(orderid,id,name,num,comfired) VALUES(?,?,?,?,?);";
         Connection connection = null;
         try {
             connection = DBUtil.getConnection();
