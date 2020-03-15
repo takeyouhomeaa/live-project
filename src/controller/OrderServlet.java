@@ -49,9 +49,13 @@ public class OrderServlet extends HttpServlet {
 		OrderDao orderDao = new OrderDaoImp();
 		YesDao yesDao = new YesDaoImp();
 		List<Yes> lists= new ArrayList<Yes>();
-		lists.add(yesDao.get("yes1", ID));
-		lists.add(yesDao.get("yes1", ID));
-		lists.add(yesDao.get("yes3", ID));
+        Yes yes1 = yesDao.get("Yes1", ID);
+        Yes yes2 = yesDao.get("Yes2", ID);
+        Yes yes3 = yesDao.get("Yes3", ID);
+        if(yes1.getOrderid() != null){ lists.add(yes1);}
+        if(yes2.getOrderid() != null){ lists.add(yes2);}
+        if(yes3.getOrderid() != null){ lists.add(yes3);}
+
 		try {
 			if(IDCardValidate(ID))
 			{
