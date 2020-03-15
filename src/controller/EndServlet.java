@@ -31,7 +31,8 @@ public class EndServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
 		win.getRandom(request,response);
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		response.getWriter().append("The extraction is completed and the data has been stored in the database").
+				append(request.getContextPath());
 		
 	}
 

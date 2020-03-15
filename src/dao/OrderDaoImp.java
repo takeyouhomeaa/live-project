@@ -48,7 +48,7 @@ public class OrderDaoImp implements OrderDao {
             preparedStatement.setString(5,order.getOrderid());
             flat=preparedStatement.execute();
             DBUtil.close(null,preparedStatement,connection);
-            return flat;
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
         }

@@ -15,7 +15,6 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import org.apache.jasper.tagplugins.jstl.core.Out;
 
 import java.io.IOException;
 import java.text.ParseException;
@@ -82,7 +81,7 @@ public class OrderServlet extends HttpServlet {
                             order.setNum(Integer.parseInt(number));
                             order.setOrderid(uuid);
                             if (orderDao.add(order)) {
-                                //??????
+                                response.getWriter().println("SUCCESS!!!");
                             }
                         }
 						else {
