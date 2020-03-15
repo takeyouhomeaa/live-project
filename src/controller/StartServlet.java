@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-@WebServlet(urlPatterns = "/StartServlet")
+@WebServlet(urlPatterns = "/StartServlet1")
 public class StartServlet extends HttpServlet {
     StartService startService = new StartService();
     @Override

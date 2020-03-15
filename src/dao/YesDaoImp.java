@@ -130,5 +130,35 @@ public class YesDaoImp implements YesDao{
         }
         return null;
     }
+
+    @Override
+    public Yes getByOrderId(String table, String orderId) {
+        Yes yes = new Yes();
+        String sql = "SELECT * FROM `" + table +"` WHERE orderid = ?";
+        Connection connection = null;
+        try {
+            connection = DBUtil.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1,orderId);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                String orderid = resultSet.getString("orderid");
+                String id1 = resultSet.getString("id");
+                String name = resultSet.getString("name");
+                Integer num = resultSet.getInt("num");
+                Integer comfired = resultSet.getInt("comfired");
+                yes.setName(name);
+                yes.setNum(num);
+                yes.setId(id1);
+                yes.setOrderid(orderid);
+                yes.setComfired(comfired);
+            }
+            DBUtil.close(null,preparedStatement,connection);
+            return yes;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
 

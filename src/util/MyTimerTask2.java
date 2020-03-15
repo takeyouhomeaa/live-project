@@ -6,7 +6,8 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 import java.util.TimerTask;
 
-public class MyTimerTask extends TimerTask {
+public class MyTimerTask2 extends TimerTask {
+
     private HttpServletRequest request;
     private HttpServletResponse response;
 
@@ -30,11 +31,10 @@ public class MyTimerTask extends TimerTask {
     @Override
     public void run() {
         HttpSession session = request.getSession();
-        session.setAttribute("appointmentStatus", true);
+        session.setAttribute("appointmentStatus", false);
         session.setMaxInactiveInterval(-1);
         Cookie cookie = new Cookie("JSESSIONID", session.getId());
         cookie.setMaxAge(2592000);
         response.addCookie(cookie);
-
     }
 }

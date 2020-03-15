@@ -1,6 +1,7 @@
 package controller;
 
 import domain.Order;
+import domain.OrderData;
 import service.PreOrderService;
 
 import javax.servlet.ServletException;
@@ -20,9 +21,14 @@ public class PreOrderServlet extends HttpServlet {
     }
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-        Integer endTime = preOrderService.getEndTime(new Date());
-        Long startTime = preOrderService.getStartTime(new Date());
-        preOrderService.setTimer(request,response,startTime,endTime);
-        request.getRequestDispatcher("").forward(request,response);
+        OrderData time = preOrderService.getTime();
+        Date date = new Date();
+        long time1 = time.getStart().getTime();
+        long startTime = date.getTime() - time1;
+        long  time2= time.getEnd().getTime();
+        long endTime = startTime + time2 - time1;
+        preOrderService.setStartTimer(request,response,startTime);
+        preOrderService.setEndTimer(request,response,endTime);
+        request.getRequestDispatcher("order.jsp").forward(request,response);
     }
 }
