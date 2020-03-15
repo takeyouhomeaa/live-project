@@ -4,16 +4,26 @@ public class Order {
     private String name;
     private Integer num;
     private String id;
-    private Integer phone;
+    private String phone;
+    private String orderid;
 
     public Order() {
     }
 
-    public Order(String name, Integer num, String id, Integer phone) {
+    public Order(String name, Integer num, String id, String phone, String orderid) {
         this.name = name;
         this.num = num;
         this.id = id;
         this.phone = phone;
+        this.orderid = orderid;
+    }
+
+    public String getOrderid() {
+        return orderid;
+    }
+
+    public void setOrderid(String orderid) {
+        this.orderid = orderid;
     }
 
     public String getName() {
@@ -40,11 +50,11 @@ public class Order {
         this.id = id;
     }
 
-    public Integer getPhone() {
+    public String getPhone() {
         return phone;
     }
 
-    public void setPhone(Integer phone) {
+    public void setPhone(String phone) {
         this.phone = phone;
     }
 

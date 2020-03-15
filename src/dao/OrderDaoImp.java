@@ -22,7 +22,7 @@ public class OrderDaoImp implements OrderDao {
             PreparedStatement preparedStatement = connection.prepareStatement(sql);
             ResultSet resultSet = preparedStatement.executeQuery();
             while (resultSet.next()){
-                count = resultSet.getInt(0);
+                count = resultSet.getInt(1);
             }
             DBUtil.close(resultSet,preparedStatement,connection);
             return count;
@@ -35,7 +35,7 @@ public class OrderDaoImp implements OrderDao {
     @Override
     public void add(Order order) {
         int count = -1;
-        String sql = "INSERT INTO `order` VALUES(?,?,?,?);";
+        String sql = "INSERT INTO `order`(name,num,id,phone,orderid) VALUES(?,?,?,?,?);";
         Connection connection = null;
         try {
             connection = DBUtil.getConnection();
@@ -43,7 +43,8 @@ public class OrderDaoImp implements OrderDao {
             preparedStatement.setString(1,order.getName());
             preparedStatement.setInt(2,order.getNum());
             preparedStatement.setString(3,order.getId());
-            preparedStatement.setInt(4,order.getPhone());
+            preparedStatement.setString(4,order.getPhone());
+            preparedStatement.setString(5,order.getOrderid());
             System.out.println(sql);
             preparedStatement.execute();
             DBUtil.close(null,preparedStatement,connection);
@@ -54,19 +55,32 @@ public class OrderDaoImp implements OrderDao {
 
     @Override
     public void update(Order order) {
-        String sql = "INSERT INTO `order` VALUES (?,?,?,?)";
         Connection connection = null;
-        try {
-            connection = DBUtil.getConnection();
-            PreparedStatement preparedStatement = connection.prepareStatement(sql);
-            preparedStatement.setString(1,order.getName());
-            preparedStatement.setInt(2,order.getNum());
-            preparedStatement.setString(3,order.getId());
-            preparedStatement.setInt(4,order.getPhone());
-            preparedStatement.execute();
-            DBUtil.close(null,preparedStatement,connection);
-        } catch (SQLException e) {
-            e.printStackTrace();
+        String sql = "";
+        if(order.getId() != null && order.getPhone() == null){
+            sql = "UPDATE `order` SET name = ? WHERE id = ?";
+            try {
+                connection = DBUtil.getConnection();
+                PreparedStatement preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setString(1,order.getName());
+                preparedStatement.setString(2,order.getId());
+                preparedStatement.execute();
+                DBUtil.close(null,preparedStatement,connection);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
+        }else if(order.getPhone() != null && order.getId() == null) {
+            sql = "UPDATE `order` SET name = ? WHERE phone = ?";
+            try {
+                connection = DBUtil.getConnection();
+                PreparedStatement preparedStatement = connection.prepareStatement(sql);
+                preparedStatement.setString(1,order.getName());
+                preparedStatement.setString(2,order.getPhone());
+                preparedStatement.execute();
+                DBUtil.close(null,preparedStatement,connection);
+            } catch (SQLException e) {
+                e.printStackTrace();
+            }
         }
     }
 
@@ -88,7 +102,7 @@ public class OrderDaoImp implements OrderDao {
     @Override
     public List<Order> list() {
         List<Order> list = new ArrayList<>();
-        String sql = "SELECT * count FROM `order`";
+        String sql = "SELECT * FROM `order`";
         Connection connection = null;
         try {
             connection = DBUtil.getConnection();
@@ -98,8 +112,9 @@ public class OrderDaoImp implements OrderDao {
                 String name = resultSet.getString("name");
                 Integer num = resultSet.getInt("num");
                 String id = resultSet.getString("id");
-                Integer phone = resultSet.getInt("phone");
-                list.add(new Order(name,num,id,phone));
+                String phone = resultSet.getString("phone");
+                String orderid = resultSet.getString("orderid");
+                list.add(new Order(name,num,id,phone,orderid));
             }
             DBUtil.close(null,preparedStatement,connection);
             return list;
@@ -112,7 +127,7 @@ public class OrderDaoImp implements OrderDao {
     @Override
     public Order get(String id) {
         Order order = new Order();
-        String sql = "SELECT * count FROM `order` WHERE id = ?";
+        String sql = "SELECT * FROM `order` WHERE id = ?";
         Connection connection = null;
         try {
             connection = DBUtil.getConnection();
@@ -123,7 +138,7 @@ public class OrderDaoImp implements OrderDao {
                 String name = resultSet.getString("name");
                 Integer num = resultSet.getInt("num");
                 String id1 = resultSet.getString("id");
-                Integer phone = resultSet.getInt("phone");
+                String phone = resultSet.getString("phone");
                 order.setName(name);
                 order.setNum(num);
                 order.setId(id1);
