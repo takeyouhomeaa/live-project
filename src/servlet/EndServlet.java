@@ -15,11 +15,12 @@ import javax.servlet.http.HttpSession;
 import dao.OrderDao;
 import dao.OrderDaoImp;
 import domain.Order;
+import serve.win;
 
 /**
  * Servlet implementation class EndServlet
  */
-@WebServlet("/EndServlet")
+@WebServlet(urlPatterns = "/EndServlet")
 public class EndServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
        
@@ -36,6 +37,7 @@ public class EndServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
+		win.getRandom(request,response);
 		response.getWriter().append("Served at: ").append(request.getContextPath());
 		
 	}
