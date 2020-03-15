@@ -22,27 +22,30 @@ public class DBUtil {
 	}
 
 	public static Connection getConnection() throws SQLException {
-		String url = String.format("jdbc:mysql://%s:%d/%s?characterEncoding=%s", ip, port, database, encoding);
+		String url = String.format("jdbc:mysql://%s:%d/%s?" +
+				"serverTimezone=UTC&characterEncoding=utf8&useUnicode=true&useSSL=false", ip, port, database);
 		return DriverManager.getConnection(url, loginName, password);
 	}
 
-	/* 关闭连接的方法 */
 	public static void close(ResultSet rs, Statement stmt, Connection conn) {
 		try {
-			if (rs != null)
+			if (rs != null){
 				rs.close();
+			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
 		try {
-			if (stmt != null)
+			if (stmt != null){
 				stmt.close();
+			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}
 		try {
-			if (conn != null)
+			if (conn != null){
 				conn.close();
+			}
 		} catch (Exception ex) {
 			ex.printStackTrace();
 		}

@@ -7,6 +7,17 @@ public class Yes {
     private Integer num;
     private Integer comfired;
 
+    public Yes() {
+    }
+
+    public Yes(String orderid, String id, String name, Integer num, Integer comfired) {
+        this.orderid = orderid;
+        this.id = id;
+        this.name = name;
+        this.num = num;
+        this.comfired = comfired;
+    }
+
     public String getOrderid() {
         return orderid;
     }

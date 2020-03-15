@@ -9,7 +9,13 @@
   身份证号: <input type="text" name="ID" required><br>
   手机号: <input type="text" name="phone" autocomplete="on" required><br>
   想要预约的口罩数量<input type="number" name="number" required><br>
-  <input type="submit">
+  <input type="submit" value="预约">
+</form>
+<form action="StartServlet">
+<input type="submit" value="预约开始">
+</form>
+<form action="EndServlet">
+<input type="submit" value="预约结束">
 </form>
   </body>
 </html>

@@ -1,11 +1,14 @@
 package servlet;
 
+
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.Hashtable;
+import java.util.List;
 import java.util.UUID;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -15,8 +18,16 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
+import com.mysql.cj.Session;
+
+import dao.OrderDao;
+import dao.OrderDaoImp;
+import dao.YesDao;
+import dao.YesDaoImp;
 import domain.Order;
+import domain.Yes;
 import util.*;
 
 /**
@@ -45,24 +56,44 @@ public class OrderServlet extends HttpServlet {
 		String phone = request.getParameter("phone");
 		String number = request.getParameter("number");
 		String uuid = UUID.randomUUID().toString().replaceAll("-","");
+		OrderDao orderDao = new OrderDaoImp();
+		YesDao yesDao = new YesDaoImp();
+		List<Yes> lists= new ArrayList<Yes>();
+		lists.add(yesDao.get("yes1", ID));
+		lists.add(yesDao.get("yes1", ID));
+		lists.add(yesDao.get("yes3", ID));
 		try {
 			if(IDCardValidate(ID))
 			{
 				if(phoneValidate(phone))
 				{
-					Order order = new Order();
-					order.setName(name);
-					order.setId(ID);
-					order.setPhone(phone);
-					order.setNum(Integer.parseInt(number));
-					order.setOrderid(uuid);
+					if(isWin(lists))
+					{
+
+						Order order = new Order();
+						order.setName(name);
+						order.setId(ID);
+						order.setPhone(phone);
+						order.setNum(Integer.parseInt(number));
+						order.setOrderid(uuid);
+						if(orderDao.add(order))
+						{
+							//预定成功
+						}
+						else {
+							//预定失败，主键：身份证号码跟电话号码，插入失败着证明预约过了
+						}
+					}
+					else {
+						//前三次预约抽取成功
+					}
 				}
 				else {
-					
+					//电话号码错误
 				}
 			}
 			else {
-				
+				//身份证错误
 			}
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
@@ -83,6 +114,17 @@ public class OrderServlet extends HttpServlet {
 		}
 		return true;
 		
+	}
+	public boolean isWin(List<Yes> lists)
+	{
+		for(Yes yes:lists)
+		{
+			if(yes.getComfired()==1)
+			{
+				return false;
+			}
+		}
+		return true;
 	}
 	public static boolean IDCardValidate(String IDStr) throws ParseException {          
         String Ai = "";  
