@@ -39,7 +39,7 @@ public class searchServlet extends HttpServlet{
 		}
 		else {
 		
-    	request.getRequestDispatcher("uOrder.jsp").forward(request, response);
+    	request.getRequestDispatcher("noOrder.jsp").forward(request, response);
 		}
 		}
 

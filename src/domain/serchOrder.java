@@ -20,7 +20,7 @@ public class serchOrder {
 		buy1=buy2;
 		if(buy1==null)
 		buy1=buy3;
-		return buy3;
+		return buy1;
 	}
 
 }
