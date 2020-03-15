@@ -11,7 +11,7 @@
   <body>
   		<div id = "headerTitle">某口罩预约系统</div>
   		<div id = "formInformationSubmit">
-  			<form method = "post" action = "preOrderServlet">
+  			<form method = "post" action = "OrderServlet">
   				<label class = "lable">姓       名：</label>
   				<br />
   				<input type = "text" id = "username" name = "username" required/>

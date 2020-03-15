@@ -113,7 +113,7 @@ public class OrderDataDaoImp implements OrderDataDao{
 	                    e.printStackTrace();
 	                }
 	                orderdata.setStart(startTime);
-	                orderdata.setEnd(startTime);
+	                orderdata.setEnd(endTimeDate);
 	                orderdata.setSum(sum);
 	            }
 		} catch (SQLException e) {

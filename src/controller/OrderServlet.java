@@ -7,6 +7,7 @@ import dao.YesDao;
 import dao.YesDaoImp;
 import domain.Order;
 import domain.Yes;
+import service.OrderService;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -25,6 +26,7 @@ import java.util.regex.Pattern;
  */
 @WebServlet("/OrderServlet")
 public class OrderServlet extends HttpServlet {
+    OrderService orderService = new OrderService();
 	private static final long serialVersionUID = 1L;
        
     /**
@@ -39,7 +41,12 @@ public class OrderServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
+        Integer start = (Integer)request.getSession().getAttribute("start");
+        request.setCharacterEncoding("utf-8");
+        if(start == null || start == 0 ){
+            response.getWriter().println("The appointment time has not yet started!");
+        }
+        // TODO Auto-generated method stub
 		//response.getWriter().append("Served at: ").append(request.getContextPath());
 		String name =request.getParameter("name");
 		String ID =request.getParameter("ID");
@@ -63,17 +70,18 @@ public class OrderServlet extends HttpServlet {
 				{
 					if(isWin(lists))
 					{
+					    if(orderService.determineIfIdentityIsDuplicated(ID,phone)) {
 
-						Order order = new Order();
-						order.setName(name);
-						order.setId(ID);
-						order.setPhone(phone);
-						order.setNum(Integer.parseInt(number));
-						order.setOrderid(uuid);
-						if(orderDao.add(order))
-						{
-							//??????
-						}
+                            Order order = new Order();
+                            order.setName(name);
+                            order.setId(ID);
+                            order.setPhone(phone);
+                            order.setNum(Integer.parseInt(number));
+                            order.setOrderid(uuid);
+                            if (orderDao.add(order)) {
+                                //??????
+                            }
+                        }
 						else {
 							//???????????????????????ดย??????????????????????
 						}

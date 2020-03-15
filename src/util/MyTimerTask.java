@@ -30,7 +30,7 @@ public class MyTimerTask extends TimerTask {
     @Override
     public void run() {
         HttpSession session = request.getSession();
-        session.setAttribute("appointmentStatus", true);
+        session.setAttribute("start", 1);
         session.setMaxInactiveInterval(-1);
         Cookie cookie = new Cookie("JSESSIONID", session.getId());
         cookie.setMaxAge(2592000);

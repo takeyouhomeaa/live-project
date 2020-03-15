@@ -12,4 +12,5 @@ public interface OrderDao {
     void delete(String id) ;
     List<Order> list();
     Order get(String id);
+    Order getByPhone(String phone);
 }

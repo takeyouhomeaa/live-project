@@ -154,4 +154,32 @@ public class OrderDaoImp implements OrderDao {
         }
         return null;
     }
+
+    @Override
+    public Order getByPhone(String phone) {
+        Order order = new Order();
+        String sql = "SELECT * FROM `order` WHERE phone = ?";
+        Connection connection = null;
+        try {
+            connection = DBUtil.getConnection();
+            PreparedStatement preparedStatement = connection.prepareStatement(sql);
+            preparedStatement.setString(1,phone);
+            ResultSet resultSet = preparedStatement.executeQuery();
+            while (resultSet.next()){
+                String name = resultSet.getString("name");
+                Integer num = resultSet.getInt("num");
+                String id1 = resultSet.getString("id");
+                String phone1 = resultSet.getString("phone");
+                order.setName(name);
+                order.setNum(num);
+                order.setId(id1);
+                order.setPhone(phone1);
+            }
+            DBUtil.close(null,preparedStatement,connection);
+            return order;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
 }
