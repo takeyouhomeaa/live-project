@@ -6,7 +6,7 @@ import java.util.List;
 
 public interface YesDao {
     int getTotal(String table);
-    void add(String table,Yes yes);
+    boolean add(String table,Yes yes);
     void update(String table,Yes yes);
     void delete(String table,String id) ;
     List<Yes> list(String table);

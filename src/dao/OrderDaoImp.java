@@ -33,7 +33,7 @@ public class OrderDaoImp implements OrderDao {
     }
 
     @Override
-    public void add(Order order) {
+    public boolean add(Order order) {
         int count = -1;
         String sql = "INSERT INTO `order`(name,num,id,phone,orderid) VALUES(?,?,?,?,?);";
         Connection connection = null;
@@ -45,12 +45,13 @@ public class OrderDaoImp implements OrderDao {
             preparedStatement.setString(3,order.getId());
             preparedStatement.setString(4,order.getPhone());
             preparedStatement.setString(5,order.getOrderid());
-            System.out.println(sql);
             preparedStatement.execute();
             DBUtil.close(null,preparedStatement,connection);
+            return true;
         } catch (SQLException e) {
             e.printStackTrace();
         }
+        return false;
     }
 
     @Override
