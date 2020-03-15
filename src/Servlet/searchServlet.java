@@ -1,6 +1,6 @@
 //处理查询请求,调用searchOrder方法，跳转页面
 
-package Servlet;
+package servlet;
 
 import java.io.IOException;
 import java.util.List;
@@ -31,7 +31,7 @@ public class searchServlet extends HttpServlet{
 		
 		Yes buy=serchOrder.serch_(oId);
 		
-		if(oId!=null)
+		if(buy.getId()!=null)
 		{
 			request.setAttribute("buy", buy);
 	    	request.getRequestDispatcher("uOrder.jsp").forward(request, response);

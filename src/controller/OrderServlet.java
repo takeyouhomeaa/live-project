@@ -13,6 +13,9 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import org.apache.jasper.tagplugins.jstl.core.Out;
+
 import java.io.IOException;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -72,22 +75,22 @@ public class OrderServlet extends HttpServlet {
 						order.setOrderid(uuid);
 						if(orderDao.add(order))
 						{
-							//??????
+							response.getWriter().print("book Successfully,your identification code is '"+uuid+"'");
 						}
 						else {
-							//???????????????????????´Â??????????????????????
+							response.getWriter().print("This id or phonenumber has already been booked");
 						}
 					}
 					else {
-						//?????????????
+						request.getRequestDispatcher("/orderFail.jsp").forward(request, response);
 					}
 				}
 				else {
-					//?´Â???????
+					response.getWriter().print("Phonenumber is error");
 				}
 			}
 			else {
-				//????????
+				response.getWriter().print("the ID is error");
 			}
 		} catch (ParseException e) {
 			// TODO Auto-generated catch block
@@ -201,41 +204,41 @@ public class OrderServlet extends HttpServlet {
      
     private static Hashtable<String, String> GetAreaCode() {
         Hashtable<String, String> hashtable = new Hashtable<String, String>();
-        hashtable.put("11", "±±¾©");
-        hashtable.put("12", "Ìì½ò");
-        hashtable.put("13", "ºÓ±±");
-        hashtable.put("14", "É½Î÷");
-        hashtable.put("15", "ÄÚÃÉ¹Å");
-        hashtable.put("21", "ÁÉÄþ");
-        hashtable.put("22", "¼ªÁÖ");
-        hashtable.put("23", "ºÚÁú½­");
-        hashtable.put("31", "ÉÏº£");
-        hashtable.put("32", "½­ËÕ");
-        hashtable.put("33", "Õã½­");
-        hashtable.put("34", "°²»Õ");
-        hashtable.put("35", "¸£½¨");
-        hashtable.put("36", "½­Î÷");
-        hashtable.put("37", "É½¶«");
-        hashtable.put("41", "ºÓÄÏ");
-        hashtable.put("42", "ºþ±±");
-        hashtable.put("43", "ºþÄÏ");
-        hashtable.put("44", "¹ã¶«");
-        hashtable.put("45", "¹ãÎ÷");
-        hashtable.put("46", "º£ÄÏ");
-        hashtable.put("50", "ÖØÇì");
-        hashtable.put("51", "ËÄ´¨");
-        hashtable.put("52", "¹óÖÝ");
-        hashtable.put("53", "ÔÆÄÏ");
-        hashtable.put("54", "Î÷²Ø");
-        hashtable.put("61", "ÉÂÎ÷");
-        hashtable.put("62", "¸ÊËà");
-        hashtable.put("63", "Çàº£");
-        hashtable.put("64", "ÄþÏÄ");
-        hashtable.put("65", "ÐÂ½®");
-        hashtable.put("71", "Ì¨Íå");
-        hashtable.put("81", "Ïã¸Û");
-        hashtable.put("82", "°ÄÃÅ");
-        hashtable.put("91", "¹úÍâ");
+        hashtable.put("11", "ï¿½ï¿½ï¿½ï¿½");
+        hashtable.put("12", "ï¿½ï¿½ï¿½");
+        hashtable.put("13", "ï¿½Ó±ï¿½");
+        hashtable.put("14", "É½ï¿½ï¿½");
+        hashtable.put("15", "ï¿½ï¿½ï¿½É¹ï¿½");
+        hashtable.put("21", "ï¿½ï¿½ï¿½ï¿½");
+        hashtable.put("22", "ï¿½ï¿½ï¿½ï¿½");
+        hashtable.put("23", "ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½");
+        hashtable.put("31", "ï¿½Ïºï¿½");
+        hashtable.put("32", "ï¿½ï¿½ï¿½ï¿½");
+        hashtable.put("33", "ï¿½ã½­");
+        hashtable.put("34", "ï¿½ï¿½ï¿½ï¿½");
+        hashtable.put("35", "ï¿½ï¿½ï¿½ï¿½");
+        hashtable.put("36", "ï¿½ï¿½ï¿½ï¿½");
+        hashtable.put("37", "É½ï¿½ï¿½");
+        hashtable.put("41", "ï¿½ï¿½ï¿½ï¿½");
+        hashtable.put("42", "ï¿½ï¿½ï¿½ï¿½");
+        hashtable.put("43", "ï¿½ï¿½ï¿½ï¿½");
+        hashtable.put("44", "ï¿½ã¶«");
+        hashtable.put("45", "ï¿½ï¿½ï¿½ï¿½");
+        hashtable.put("46", "ï¿½ï¿½ï¿½ï¿½");
+        hashtable.put("50", "ï¿½ï¿½ï¿½ï¿½");
+        hashtable.put("51", "ï¿½Ä´ï¿½");
+        hashtable.put("52", "ï¿½ï¿½ï¿½ï¿½");
+        hashtable.put("53", "ï¿½ï¿½ï¿½ï¿½");
+        hashtable.put("54", "ï¿½ï¿½ï¿½ï¿½");
+        hashtable.put("61", "ï¿½ï¿½ï¿½ï¿½");
+        hashtable.put("62", "ï¿½ï¿½ï¿½ï¿½");
+        hashtable.put("63", "ï¿½àº£");
+        hashtable.put("64", "ï¿½ï¿½ï¿½ï¿½");
+        hashtable.put("65", "ï¿½Â½ï¿½");
+        hashtable.put("71", "Ì¨ï¿½ï¿½");
+        hashtable.put("81", "ï¿½ï¿½ï¿½");
+        hashtable.put("82", "ï¿½ï¿½ï¿½ï¿½");
+        hashtable.put("91", "ï¿½ï¿½ï¿½ï¿½");
         return hashtable;
     }  
 
